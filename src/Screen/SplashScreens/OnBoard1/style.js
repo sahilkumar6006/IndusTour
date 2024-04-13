@@ -1,0 +1,45 @@
+import { StyleSheet } from "react-native";
+
+export default styles = StyleSheet.create({
+    imgBackground:{
+        flex:1,
+    },
+    rootContainer:{
+        flex:1,
+        justifyContent:'flex-end',
+        padding:18,
+        marginVertical:30
+    },
+    header:{
+        fontSize:28,
+        fontWeight:'bold',
+        color:'white',
+        marginBottom:10
+    },
+    desc:{
+        fontSize:14,
+        fontWeight:'600',
+        color:'white',
+        marginBottom:25
+    },
+    nextbtn:{
+        backgroundColor:'white',
+        borderRadius:8,
+        alignItems:'center',
+        justifyContent:'center',
+        padding:8,
+        marginVertical:20
+    },
+    buttonText:{
+        color:'black',
+        fontSize:18,
+        fontWeight:'bold'
+    },
+    SkipButton:{
+        alignSelf:'center',
+        color:'white',
+        fontSize:18,
+        fontWeight:'bold',
+        marginVertical:10
+    }
+})
