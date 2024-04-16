@@ -14,7 +14,8 @@ import styles from './style';
 import auth from '@react-native-firebase/auth';
 import Images from '../../Assets/Index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CommonActions } from '@react-navigation/native';
+import { CommonActions, useTheme } from '@react-navigation/native';
+import { ActivityIndicator } from 'react-native-paper';
 
 const SignINSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -28,7 +29,11 @@ export default Index = ({navigation}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [lockicon, setLockIcon] = useState(true)
+  const [lockicon, setLockIcon] = useState(true);
+  const [userdata, setUserData] = useState()
+  // const [userData, setUserData]  = useState();
+  // const [userData, setUserData] = useState();
+  // const [isUserLogin, setIsUserLogin] = useState();
 
   const handleEmail = (value)=> {
     setEmail(value)
@@ -56,8 +61,11 @@ export default Index = ({navigation}) => {
             // setMessage('');
             const setData = async () => {
              await AsyncStorage.setItem('isUserLogin', isUserLogin)
+             
              console.log("in the setData",)
             }
+
+            setUserData(setData)
             navigation.navigate('TabNavigator', {
               isUserLogin: isUserLogin,
             });
@@ -130,8 +138,11 @@ export default Index = ({navigation}) => {
                 <Text style={styles.ForgotPasswordtxt}>Forgot Password</Text>
               </TouchableOpacity>
 
+
               <TouchableOpacity style={styles.Loginbtn} onPress={handleSubmit}>
                 <Text style={styles.Logintxt}>Login</Text>
+              
+                {/* <ActivityIndicator/> */}
               </TouchableOpacity>
 
               <View

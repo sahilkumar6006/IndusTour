@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import styles from './style';
 import Images from '../../Assets/Index'
 
-const BookingScreen = () => {
+const BookingScreen = ({navigation}) => {
   // const [showModal, setShowModal] = useState(false);
   return (
     <View style={{flex:1, }}> 
@@ -61,7 +61,7 @@ const BookingScreen = () => {
       <Text>55545468464</Text>
     </View>
     
-<TouchableOpacity style={styles.Loginbtn} >
+<TouchableOpacity style={styles.Loginbtn} onPress={() => navigation.navigate("SlotScreen")} >
                 <Text style={styles.Logintxt}>Continue Booking</Text>
               </TouchableOpacity>
 </View>

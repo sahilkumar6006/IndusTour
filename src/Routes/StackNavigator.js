@@ -15,6 +15,8 @@ import TabNavigator from './TabNavigator';
 import EditProfile from '../Screen/EditProfileScreen/Index';
 import IndustriesScreen from '../Screen/IndustriesScreen/Index';
 import ChatScreen from '../Screen/ChatScreen';
+import BookingScreen from '../Screen/BookingScreen/Index';
+import SlotScreen from '../Screen/SlotScreen';
 
 const Stack = createNativeStackNavigator();
 export default function StackNavigator() {
@@ -35,6 +37,9 @@ export default function StackNavigator() {
         <Stack.Screen name='EditProfile' component={EditProfile} options={{headerShown:false}} />
         <Stack.Screen name='IndustriesScreen' component={IndustriesScreen} options={{headerShown:false}} />
         <Stack.Screen name='ChatScreen' component={ChatScreen}  options={{headerShown: false}} />
+        <Stack.Screen name='BookingScreen' component={BookingScreen} options={{headerShown: false}} />
+        <Stack.Screen name='SlotScreen' component={SlotScreen} options={{headerShown: false}} />
+       
       </Stack.Navigator>
     </NavigationContainer>
   )

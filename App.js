@@ -10,9 +10,9 @@ import BookingScreen from './src/Screen/BookingScreen/Index.js'
 import SlotScreen from './src/Screen/SlotScreen/index.js'
 export default function App() {
   return (
-  // <StackNavigator/>
+  <StackNavigator/>
   // <BookingScreen/>
-  <SlotScreen/>
+  // <SlotScreen/>
   // <ChatScreen/>
   // <Testing/>
   )
