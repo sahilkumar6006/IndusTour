@@ -1,57 +1,32 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios'
-import firebase from '../../firebase/firebaseConfig';
-import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
+import {API} from '../../api';
+import axios from 'axios';
 
 const initialState = {
   userData: null,
   isLoading: false,
   isSuccess: false,
-  isError: false
+  isError: false,
 };
 
-//login
-export const login = createAsyncThunk('auth/login', async(credential,  thunkAPI) => {
-  const { email, password } = credential;
-  console.log("in the login and password", email,password)
-try {
-  const response = await firebase.auth().signInWithEmailAndPassword(email, password);
-  console.log("resoponse succesfull", response.user)
+// login
+export const login = createAsyncThunk('login', async (params, thunkApi) => {
+  console.log('🚀 ~ file: AuthSlice.js:12 ~ login ~ params:', params);
+  const { username, password } = params;
+  console.log("in the login auth", username, password);
   
-
-  const getUserData = async() => {
-    await AsyncStorage.setItem("userData", JSON.stringify(response.user))
-    console.log("Data is stored in the Async Storage")
-  }
-
-  getUserData()
-   
-     const userData = {
-      uid: response.user.uid,
-      email: response.user.email,
-  
-    };
-    return userData;
+  try {
+    const response = await axios.post('https://dummyjson.com/auth/login', params);
+    console.log('🚀 ~ file: AuthSlice.js:16 ~ login ~ response:', response);
+    return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    console.log('🚀 ~ file: AuthSlice.js:16 ~ login ~ error:', error);
+   // Return a serializable error message
   }
+});
+// signup
 
-})
-
-export const sendPasswordResetEmail = createAsyncThunk(
-  'auth/sendPasswordResetEmail',
-  async ({ email }, thunkAPI) => {
-    try {
-      await firebase.auth().sendPasswordResetEmail(email);
-      console.log("login succesfull")
-      return { email };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// confirmSignup
 
 const AuthSlice = createSlice({
   name: 'authSlice',
@@ -72,6 +47,6 @@ const AuthSlice = createSlice({
       state.isError = true;
     });
   },
-})
+});
 
-export default AuthSlice.reducer
+export default AuthSlice.reducer;

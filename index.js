@@ -11,10 +11,10 @@ import store from './src/Redux/store';
 
 export default function Main() {
   return(
-    <Provider store={store}>
+ 
 
       <App/>
-   </Provider>
+
    
   )
 }
